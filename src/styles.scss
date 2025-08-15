@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* 
+To remove the need of relative path @import '../../styles/snipets/mixins';
+Add stylePreprocessorOptions.includePaths to angular.json
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+@import 'styles/snipets/mixins';
+@import 'styles/snipets/snipets';
+
+/* @import 'scss/elements/variables';
+@import 'scss/elements/reset';
+@import 'scss/elements/typography';
+
+@import 'scss/elements/styles';
+
+@import 'scss/elements/animations';
+@import 'scss/elements/elements'; */

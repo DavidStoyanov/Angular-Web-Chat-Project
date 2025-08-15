@@ -1,0 +1,41 @@
+/*
+@include bp('mobile-device') {
+    flex-wrap: wrap;
+}
+@include bp('desktop-device') {
+    flex-wrap: nowrap;
+}
+*/
+
+@mixin bp($size) {
+    @if $size == phone {
+        @media screen and (max-width: 600px) { @content; }
+
+    } @else if $size == tablet {
+        @media screen and (min-width:  601px) and (max-width: 900px) { @content; }
+
+    } @else if $size == laptop {
+        @media screen and (min-width:  901px) and (max-width: 1200px) { @content; }
+
+    } @else if $size == desktop {
+        @media screen and (min-width:  1201px) { @content; }
+
+    } @else if $size == mobile-device {
+        @media screen and (max-width:  900px) { @content; }
+
+    } @else if $size == desktop-device {
+        @media screen and (min-width:  901px) { @content; }
+    }
+}
+
+@mixin hover() {
+    @media (hover: hover) {
+        @content;
+    }
+}
+
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

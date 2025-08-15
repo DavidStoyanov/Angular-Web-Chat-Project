@@ -1,0 +1,10 @@
+%pseudo {
+    display: block;
+    content: '';
+}
+
+%invisible-input {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+}
