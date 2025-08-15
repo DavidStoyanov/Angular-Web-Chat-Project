@@ -1,0 +1,27 @@
+.btn {
+    display: block;
+    padding: var(--basic-padding-input);
+    border-radius: var(--basic-border-radius);
+    cursor: pointer;
+}
+
+.input {
+    padding: 0.5em;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+    border-radius: var(--basic-border-radius);
+    background-color: var(--basic-color);
+
+    &:focus, &:hover {
+        border-color: var(--theme-1-pool-blue-rgba);
+    }
+}
+
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}

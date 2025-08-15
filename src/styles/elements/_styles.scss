@@ -1,0 +1,76 @@
+section.error-info {
+    margin-bottom: 1.75em;
+}
+
+small.danger {
+    color: var(--basic-color-danger);
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.table {
+    background-color: rgba(55, 55, 55, 0.2);
+    border-radius: 0.2em;
+    box-shadow: 0 0 1px 0px black inset, 0 0 1px 0px black;
+    overflow: hidden;
+
+    & > thead {
+        font-weight: bold;
+
+        th:not(:first-child) {
+        width: 8em;
+        }
+    }
+
+    & > tbody {
+        tr:nth-child(odd) {
+            background-color: rgba(20, 20, 20, 0.2);
+        }
+
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        label {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+
+                & > input[type=checkbox] {
+                    cursor: inherit;
+                    transform: scale(1.5);
+                }
+
+                & > input[type=checkbox]:disabled.disabled {
+                    cursor: default;
+                }
+            }
+
+            label.disabled {
+            cursor: default;
+        }
+
+    }
+
+    th, td {
+        padding: 0.5em
+    }
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}

@@ -1,0 +1,81 @@
+:root {
+    --sizing-fs-base: 12px;
+    --sizing-ws-base: 1.5em;
+
+    --sizing-fs-tablet: 14px;
+    --sizing-fs-laptop: 16px;
+    --sizing-fs-desktop: 18px;
+    --sizing-fs-huge: 20px;
+}
+
+html {
+    font: var(--sizing-fs-base);
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: .83em;
+}
+
+h6 {
+    font-size: .67em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    font-weight: bold;
+    margin-bottom: calc( var(--sizing-ws-base) / 3 );
+}
+
+p, ul, ol, dl, table {
+    margin-bottom: var(--sizing-ws-base);
+}
+
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+ul, ol {
+    padding-left: var(--sizing-ws-base);
+    list-style-type: none;
+}
+
+body, input, button, table, textarea  {
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+}
+
+
+@media (min-width: 600px) {
+    html { font-size: var(--sizing-fs-tablet); }
+}
+
+@media (min-width: 1260px) {
+    html { font-size: var(--sizing-fs-laptop); }
+}
+
+@media (min-width: 1420px) {
+    html { font-size: var(--sizing-fs-desktop); }
+}
+
+@media (min-width: 1660px) {
+    html { font-size: var(--sizing-fs-huge); }
+}
