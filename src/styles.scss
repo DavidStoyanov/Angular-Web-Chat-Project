@@ -8,8 +8,11 @@ Add stylePreprocessorOptions.includePaths to angular.json
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
-@import 'styles/snipets/mixins';
-@import 'styles/snipets/snipets';
+// INFO: No need to import mixins here
+// better way to import mixins in components: @use 'snipets/mixins' as mix;
+
+// @forward 'styles/snipets/mixins';
+// @forward 'styles/snipets/snipets';
 
 /* @import 'scss/elements/variables';
 @import 'scss/elements/reset';
