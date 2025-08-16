@@ -1,0 +1,18 @@
+.site {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header-wrap {
+
+}
+
+.page-wrap {
+    flex-grow: 1;
+}
+
+.footer-wrap {
+
+}

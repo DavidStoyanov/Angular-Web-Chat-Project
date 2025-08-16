@@ -1,0 +1,34 @@
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5em;
+    height: 100%;
+}
+
+.nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        margin: 0 0.75em;
+    }
+
+    p {
+        border: 1px solid #FFF;
+        padding: 0.5em 1em;
+        
+
+        &:hover {
+            cursor: pointer;
+            color: #000;
+            background-color: #FFF;
+        }
+    }
+
+    a {
+        justify-items: center;
+    }
+}

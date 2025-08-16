@@ -1,10 +1,19 @@
-@use 'snipets/mixins' as mix;
+.site-header {
+    display: flex;
+    color: #FFF;
+    background-color: #212529;
 
-.demo {
-    @include mix.center-flex;
+    .header-title {
+        margin: 0.3em 0.15em;
 
+        &:hover {
+            color: #EEE;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
 
-    p {
+    .app-navbar {
         flex-grow: 1;
     }
 }
