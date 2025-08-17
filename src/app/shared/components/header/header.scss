@@ -1,10 +1,12 @@
+@use 'snipets/snipets' as snipets;
+
 .site-header {
     display: flex;
     color: #FFF;
     background-color: #212529;
 
     .header-title {
-        margin: 0.3em 0.15em;
+        margin: auto 0.15em;
 
         &:hover {
             color: #EEE;
@@ -16,4 +18,7 @@
     .app-navbar {
         flex-grow: 1;
     }
+    
+    @extend %styles-anchor;
 }
+

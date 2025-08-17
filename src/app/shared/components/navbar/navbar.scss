@@ -1,3 +1,5 @@
+@use 'snipets/snipets' as snipets;
+
 .site-nav {
     display: flex;
     justify-content: space-between;
@@ -13,7 +15,7 @@
     .nav-item {
         display: flex;
         align-items: center;
-        margin: 0 0.75em;
+        margin: 0.3em 0.75em;
     }
 
     p {
@@ -31,4 +33,6 @@
     a {
         justify-items: center;
     }
+
+    @extend %styles-anchor;
 }
