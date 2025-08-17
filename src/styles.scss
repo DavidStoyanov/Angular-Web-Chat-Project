@@ -1,3 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+
 /* 
 To remove the need of relative path @import '../../styles/snipets/mixins';
 Add stylePreprocessorOptions.includePaths to angular.json
@@ -12,12 +14,18 @@ Add stylePreprocessorOptions.includePaths to angular.json
 @use 'styles/elements/animations';
 @use 'styles/elements/elements';
 
+
 // Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+
 
 html {
   @include mat.theme((
@@ -42,13 +50,41 @@ body {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
-  margin: 0;
 }
-/* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* TODO: Fix this layout */
+.page-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+    router-outlet {
+        display: none;
+    }
+
+    .page-wrap > * {
+        display: flex !important;
+        position: relative !important;
+        flex: 1 1 auto !important;
+    }
+}
+
+.site-content {
+    display: flex;
+}
+
+/* :host {
+  display: block;
+  height: 100%;
+  width: 100%;
+} */
+
+/* .page-wrap {
+    background-color: red;
+}
+
+.site-content {
+    background-color: rgb(0, 255, 98);
+} */
