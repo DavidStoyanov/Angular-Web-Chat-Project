@@ -8,3 +8,11 @@
     position: absolute;
     pointer-events: none;
 }
+
+%styles-anchor {
+    a, a:hover, a:focus, a:active {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+}

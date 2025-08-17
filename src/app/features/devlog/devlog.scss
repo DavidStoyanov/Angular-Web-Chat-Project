@@ -1,0 +1,20 @@
+// @use './snipets/mixins' as mix;
+@use 'snipets/mixins' as mix;
+
+.container {
+    @include mix.container-center;
+}
+
+.git-commits {
+    margin: 0.5em 0em;
+}
+
+mat-expansion-panel {
+    padding: 0.3em 0;
+    margin: 0.75em 0;
+
+    &.mat-expanded {
+        background-color: #DDD;
+    }
+}
+
