@@ -1,0 +1,87 @@
+<div class="site-content">
+    <div class="container">
+
+        <form class="register" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <fieldset>
+                <h2>Registration Form</h2>
+
+                <!-- username -->
+                <mat-form-field class="example-full-width">
+                    <mat-label>Username</mat-label>
+                    <input 
+                        type="text"
+                        matInput
+                        placeholder="Johny"
+                        formControlName="username">
+
+                    @if (usernameHasError(ErrUseCase.ERROR_MSG)) {
+                    <mat-error>{{ usernameErrorMessage }}</mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- email -->
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input 
+                        type="email" 
+                        matInput
+                        placeholder="Ex. pat@example.com"
+                        formControlName="email">
+
+                    @if (emailHasError) {
+                    <mat-error>{{ emailErrorMessage }}</mat-error>
+                    }
+                </mat-form-field>
+
+                
+                <!-- passData -->
+                <div formGroupName="passData">
+
+                    <!-- password -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input 
+                            type="password" 
+                            matInput
+                            placeholder="******"
+                            formControlName="password">
+
+                        @if (passwordsHasError) {
+                        <mat-error>{{ passwordsErrorMessage }}</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <!-- rePassword -->
+                    <mat-form-field [ngClass]="{'password-margin': isPassErrMsgLong()}" class="example-full-width">
+                        <mat-label>Repeat Password</mat-label>
+                        <input 
+                            type="password" 
+                            matInput
+                            placeholder="******"
+                            formControlName="rePassword">
+
+                        @if (passwordsHasError) {
+                        <mat-error>{{ passwordsErrorMessage }}</mat-error>
+                        }
+                    </mat-form-field>
+
+                </div>
+                
+                <!-- @if (passwordsHasError) {
+                <p class="error">
+                    {{ passwordsErrorMessage }}
+                </p>
+                } -->
+
+                <button type="submit" matButton="elevated" [disabled]="registerForm.invalid">Create Account</button>
+
+                <p class="suggest">
+                    <span>Have an account?</span>
+                    <a routerLink="/users/login">Log In</a>
+                </p>
+
+            </fieldset>
+        </form>
+
+    </div>
+</div>

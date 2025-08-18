@@ -1,0 +1,49 @@
+<div class="site-content">
+    <div class="container">
+
+        <form class="login example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" method="post">
+            <fieldset>
+                <h2>Login Form</h2>
+
+                <!-- email -->
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input 
+                        type="email" 
+                        matInput
+                        placeholder="Ex. pat@example.com"
+                        formControlName="email">
+
+                    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+
+                    @if (isEmailValid) {
+                    <mat-error>{{ emailErrorMessage }}</mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- password -->
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input 
+                        type="password"
+                        matInput 
+                        placeholder="******"
+                        formControlName="password">
+
+                    @if (isPasswordValid) {
+                    <mat-error>{{ passwordErrorMessage }}</mat-error>
+                    }
+                </mat-form-field>
+
+                <button type="submit" matButton="elevated" [disabled]="loginForm.invalid">Login</button>
+
+                <p class="suggest">
+                    <span>Have an account?</span>
+                    <a routerLink="/users/register">Register</a>
+                </p>
+
+            </fieldset>
+        </form>
+        
+    </div>
+</div>

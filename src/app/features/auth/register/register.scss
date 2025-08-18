@@ -1,0 +1,40 @@
+@use 'snipets/mixins' as mix;
+
+.container {
+    @include mix.container-center;
+    margin-top: 10em;
+}
+
+form {
+    padding: 1.5em;
+    background-color: #EEE;
+    width: 400px;
+
+    mat-form-field,
+    .mat-mdc-form-field-infix,
+    .mat-mdc-text-field-wrapper {
+        width: 100%;
+    }
+
+    button[type="submit"] {
+        display: block;
+        margin-left: auto;
+    }
+
+    .suggest {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1.5em;
+        justify-content: center;
+
+        & > * {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .password-margin {
+        margin-top: 2em;
+    }
+}
+

@@ -1,0 +1,1 @@
+export enum ErrUseCase { ERROR_CLASS, ERROR_MSG } 
