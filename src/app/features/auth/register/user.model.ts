@@ -10,3 +10,10 @@ export class UserDto {
     password?: string;
     email!: string;
 }
+
+export class ResponseDto {
+    success!: boolean;
+    message!: string;
+    data?: UserDto;
+    errors?: {};
+}

@@ -54,8 +54,6 @@ export class Login {
     }
 
     get passwordErrorMessage(): string {
-        console.log(this.password?.errors)
-
         if(this.password?.hasError('required')) {
             return 'Password is required!';
         } else if (this.password?.errors?.['minlength']) {
@@ -72,14 +70,14 @@ export class Login {
 
         const { email, password } = this.loginForm.value;
 
-        const response = this.authService.login(email, password);
-
-        if (!response) {
-            this.onInvalidPassword();
-            return;
-        }
-
-        this.router.navigate(['/home']);
+        this.authService.login(email, password).subscribe(response => {
+            if (response.success) {
+                this.router.navigate(['/dashboard']);
+            } else {
+                const errorMessage = response.message;
+                this.onInvalidPassword();
+            }
+        });
     }
 
     private onInvalidPassword() {

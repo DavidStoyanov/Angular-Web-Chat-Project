@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 
-import { UserDto as User, UserRegisterDto } from '../../../features/';
-import { ApiUser } from './api-user.model';
+import { ResponseDto, UserDto as User, UserRegisterDto } from '../../../features/';
 
 @Injectable({
     providedIn: 'root'
@@ -24,29 +23,48 @@ export class AuthService {
         }
     }
 
-    private mapApiUserToUser(apiUser: ApiUser): User {
-        return <User> {
-            id: apiUser.id,
-            username: apiUser.username,
-            email: apiUser.email,
-        };
-    }
+    
 
-    login(email: string, password: string): Observable<User> {
-        return this.httpClient.post<ApiUser>(`${this.apiUrl}/login`, { email, password }, {
+    login(email: string, password: string): Observable<ResponseDto> {
+        return this.httpClient.post<ResponseDto>(`${this.apiUrl}/login`, { email, password }, {
             withCredentials: true
         }).pipe(
-            map(apiUser => this.mapApiUserToUser(apiUser)),
-            tap(user => this.setSession(user))
+            tap(response => {
+                if (response.success && response.data) {
+                    const user = response.data as User;
+                    this.setSession(user);
+                }
+            }),
+            catchError(error => {
+                console.error('Login error:', error);
+                return of({
+                    success: false,
+                    data: null,
+                    message: 'Server error. Please try again later.'
+                } as unknown as ResponseDto);
+            })
         );
     }
 
-    register(registerDto: UserRegisterDto): Observable<User> {
-        return this.httpClient.post<ApiUser>(`${this.apiUrl}/register`, registerDto, {
+    register(registerDto: UserRegisterDto): Observable<ResponseDto> {
+        return this.httpClient.post<ResponseDto>(`${this.apiUrl}/register`, registerDto, {
             withCredentials: true
         }).pipe(
-            map(apiUser => this.mapApiUserToUser(apiUser)),
-            tap(user => this.setSession(user))
+            tap(response => {
+                console.log(response)
+                if (response.success && response.data) {
+                    const user = response.data as User;
+                    this.setSession(user);
+                }
+            }),
+            catchError(error => {
+                console.error('Register error:', error);
+                return of({
+                    success: false,
+                    data: null,
+                    message: 'Server error. Please try again later.'
+                } as unknown as ResponseDto);
+            })
         );
     }
 
@@ -77,4 +95,5 @@ export class AuthService {
         this._isLoggedIn.set(false);
         localStorage.removeItem('currentUser');
     }
+    
 }

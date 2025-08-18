@@ -16,7 +16,7 @@ import {
 
 import { AuthService } from '../../../core/services';
 import { ErrUseCase } from '../../../models/enums/enums';
-import { UserRegisterDto } from './user-register.model';
+import { UserRegisterDto } from './user.model';
 
 
 @Component({
@@ -129,14 +129,14 @@ export class Register {
             username, email, password
         };
 
-        const response = this.authService.register(userDto);
-
-        if (!response) {
-            this.onInvalidPassData();
-            return;
-        }
-
-        this.router.navigate(['/home']);
+        this.authService.register(userDto).subscribe(response => {
+            if (response.success) {
+                this.router.navigate(['/home']);
+            } else {
+                const errorMessage = response.message;
+                this.onInvalidPassData();
+            }
+        });
     }
 
     isPassErrMsgLong(): boolean {
