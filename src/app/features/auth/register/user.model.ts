@@ -5,15 +5,8 @@ export interface UserRegisterDto {
 }
 
 export class UserDto {
-    id!: string;
+    id!: number;
     username!: string;
     password?: string;
     email!: string;
-}
-
-export class ResponseDto {
-    success!: boolean;
-    message!: string;
-    data?: UserDto;
-    errors?: {};
 }

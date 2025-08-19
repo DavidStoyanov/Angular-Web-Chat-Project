@@ -2,12 +2,13 @@
 
 .container {
     @include mix.container-center;
-    margin-top: 10em;
+    margin: 10em auto;
 }
 
 form {
     padding: 1.5em;
     background-color: #EEE;
+    margin: 0 auto;
     width: 400px;
 
     mat-form-field,

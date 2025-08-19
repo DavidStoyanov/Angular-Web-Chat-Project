@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 
-import { ResponseDto, UserDto as User, UserRegisterDto } from '../../../features/';
+import { UserDto as User, UserRegisterDto } from '../../../features/';
+import { ResponseDto } from '../../../models';
 
 @Injectable({
     providedIn: 'root'
@@ -25,8 +26,8 @@ export class AuthService {
 
     
 
-    login(email: string, password: string): Observable<ResponseDto> {
-        return this.httpClient.post<ResponseDto>(`${this.apiUrl}/login`, { email, password }, {
+    login(email: string, password: string): Observable<any> {
+        return this.httpClient.post<any>(`${this.apiUrl}/login`, { email, password }, {
             withCredentials: true
         }).pipe(
             tap(response => {
@@ -41,13 +42,13 @@ export class AuthService {
                     success: false,
                     data: null,
                     message: 'Server error. Please try again later.'
-                } as unknown as ResponseDto);
+                } as unknown as ResponseDto<any>);
             })
         );
     }
 
-    register(registerDto: UserRegisterDto): Observable<ResponseDto> {
-        return this.httpClient.post<ResponseDto>(`${this.apiUrl}/register`, registerDto, {
+    register(registerDto: UserRegisterDto): Observable<ResponseDto<UserRegisterDto>> {
+        return this.httpClient.post<ResponseDto<UserRegisterDto>>(`${this.apiUrl}/register`, registerDto, {
             withCredentials: true
         }).pipe(
             tap(response => {
@@ -63,7 +64,7 @@ export class AuthService {
                     success: false,
                     data: null,
                     message: 'Server error. Please try again later.'
-                } as unknown as ResponseDto);
+                } as unknown as ResponseDto<UserRegisterDto>);
             })
         );
     }
@@ -76,7 +77,7 @@ export class AuthService {
         );
     }
 
-    get currentUserId(): string | null {
+    get currentUserId(): number | null {
         return this._currentUser()?.id || null;
     }
 

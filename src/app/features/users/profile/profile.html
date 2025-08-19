@@ -1,0 +1,30 @@
+<div class="site-content">
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-card">
+                <img src="/img/profile.jpg" alt="profile picture" class="profile-img" />
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+                    <label>
+                        Alias
+                        <input type="text" formControlName="alias" />
+                    </label>
+
+                    <label>
+                        First Name
+                        <input type="text" formControlName="firstName" />
+                    </label>
+
+                    <label>
+                        Last Name
+                        <input type="text" formControlName="lastName" />
+                    </label>
+
+                    <button type="submit">Save Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

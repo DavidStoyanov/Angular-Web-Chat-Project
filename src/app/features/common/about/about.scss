@@ -1,0 +1,17 @@
+@use 'snipets/mixins' as mix;
+
+/* .container {
+    @include mix.container-center;
+} */
+
+
+.container {
+    display: block;
+    min-width: 100%;
+}
+
+img {
+    display: block;
+    min-width: 70vw;
+    margin: 0 auto;
+}
