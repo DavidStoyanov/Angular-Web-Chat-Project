@@ -18,3 +18,52 @@ mat-expansion-panel {
     }
 }
 
+.commits-header {
+    display: flex;
+    justify-content: space-between;
+
+    .filter-container {
+        display: flex;
+    }
+
+    .filter-select {
+        //display: none;
+    }
+
+    .filter-toggle {
+        display: flex;
+        align-items: center;
+        border-radius: 0.5em;
+        padding: 0 1.5em;
+        margin-left: 1em;
+        gap: 0.5rem;
+        height: 75%;
+        transition: color 0.3s ease;
+        user-select: none;
+        cursor: pointer;
+        background-color: #d0d2db75;
+
+        .chevron {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        .label {
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        &:hover {
+            color: #007bff;
+        }
+    }
+}
+
+
+
+
+

@@ -2,9 +2,40 @@
     <div class="container">
 
         <div class="git-commits">
-            <h2 class="title">Git Commits:</h2>
+            <div class="commits-header">
+                <h2 class="title">Git Commits:</h2>
+                <div class="filter-container">
+                    <div class="filter-select">
+                        <mat-form-field class="example-form-field">
+                            <mat-label>Enter a date range</mat-label>
+                            <mat-date-range-input [rangePicker]="rangePicker">
+                                <input [(ngModel)]="calendarFilter.startDate" (dateChange)="applyDateFilter()" matStartDate placeholder="Start date" />
+                                <input [(ngModel)]="calendarFilter.endDate" (dateChange)="applyDateFilter()" matEndDate placeholder="End date" />
+                            </mat-date-range-input>
+                            <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+                            <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                            <!-- #docregion date-range-picker-actions -->
+                            <mat-date-range-picker #rangePicker>
+                                <mat-date-range-picker-actions>
+                                    <button matButton matDateRangePickerCancel>Cancel</button>
+                                    <button matButton="elevated" matDateRangePickerApply>Apply</button>
+                                </mat-date-range-picker-actions>
+                            </mat-date-range-picker>
+                            <!-- #enddocregion date-range-picker-actions -->
+                        </mat-form-field>
+                    </div>
+
+                    <div class="filter-toggle" (click)="toggleFilter()">
+                        <i class="fas fa-chevron-left chevron" [class.rotate]="calendarFilter.isEnabled"></i>
+                        <span class="label">
+                            {{ calendarFilter.isEnabled ? 'Close the filter (filter: on)' : 'Open the filter (filter: off)' }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
             <div class="commit-list">
-                @for (gc of commits$; track gc.sha) {
+                @for (gc of filteredCommits; track gc.sha) {
                 <mat-accordion>
                     <mat-expansion-panel hideToggle>
                         <mat-expansion-panel-header>
