@@ -57,6 +57,7 @@ export class Devlog implements OnInit, OnDestroy {
     toggleFilter(): void {
         this.calendarFilter.isEnabled = 
             !this.calendarFilter.isEnabled;
+        this.applyDateFilter();
     }
 
     applyDateFilter(): void {
@@ -67,8 +68,6 @@ export class Devlog implements OnInit, OnDestroy {
             const itemDate = new Date(x.commit.author.date);
             const startDate = new Date(this.calendarFilter.startDate);
             const endDate = new Date(this.calendarFilter.endDate);
-
-            console.log([this.calendarFilter.startDate, this.calendarFilter.endDate])
             
             this.updateQueryParams();
 
@@ -83,8 +82,13 @@ export class Devlog implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.route.queryParams.subscribe(params => {
-            const startDate = params['start'] ? new Date(params['start']) : null;
-            const endDate = params['end'] ? new Date(params['end']) : null;
+            const [start, end] = [params['start'], params['end']];
+            this.calendarFilter.startDate = start ? start : '';
+            this.calendarFilter.endDate = end ? end : '';
+
+            if (start || start && end) {
+                this.calendarFilter.isEnabled = true;
+            }
 
             this.gitHubService.getCommits()
             .pipe(takeUntil(this.destroyed$))
@@ -93,7 +97,6 @@ export class Devlog implements OnInit, OnDestroy {
                 this.applyDateFilter();
             });
         });
-    
     }
 
     ngOnDestroy() {

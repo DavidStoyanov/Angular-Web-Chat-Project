@@ -5,7 +5,7 @@
             <div class="commits-header">
                 <h2 class="title">Git Commits:</h2>
                 <div class="filter-container">
-                    <div class="filter-select">
+                    <div [ngClass]="{enabled: calendarFilter.isEnabled, disabled: !calendarFilter.isEnabled}" class="filter-select">
                         <mat-form-field class="example-form-field">
                             <mat-label>Enter a date range</mat-label>
                             <mat-date-range-input [rangePicker]="rangePicker">
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="filter-toggle" (click)="toggleFilter()">
-                        <i class="fas fa-chevron-left chevron" [class.rotate]="calendarFilter.isEnabled"></i>
+                        <i class="fas fa-chevron-right chevron" [class.rotate]="calendarFilter.isEnabled"></i>
                         <span class="label">
                             {{ calendarFilter.isEnabled ? 'Close the filter (filter: on)' : 'Open the filter (filter: off)' }}
                         </span>

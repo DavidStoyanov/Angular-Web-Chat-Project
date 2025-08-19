@@ -26,8 +26,15 @@ mat-expansion-panel {
         display: flex;
     }
 
-    .filter-select {
-        //display: none;
+    .filter-select.enabled {
+        display: block;
+        position: relative;
+        opacity: 1;
+    }
+
+    .filter-select.disabled {
+        display: none;
+        opacity: 0.5;
     }
 
     .filter-toggle {
