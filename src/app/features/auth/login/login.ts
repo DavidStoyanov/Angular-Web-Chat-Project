@@ -72,7 +72,7 @@ export class Login {
 
         this.authService.login(email, password).subscribe(response => {
             if (response.success) {
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/home']);
             } else {
                 const errorMessage = response.message;
                 this.onInvalidPassword();
