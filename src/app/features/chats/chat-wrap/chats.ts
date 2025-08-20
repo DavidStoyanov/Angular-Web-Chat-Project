@@ -10,7 +10,15 @@ import { ChatBoard } from '../chats/chat-board/chat-board';
     styleUrl: './chats.scss',
 })
 export class Chats {
+    selectedRoomId: string | null = null;
+
     constructor() {
-        
+    }
+
+    onRoomSelected(id: string) {
+        this.selectedRoomId = null;
+        setTimeout(() => {
+            this.selectedRoomId = id;
+        }, 33)
     }
 }

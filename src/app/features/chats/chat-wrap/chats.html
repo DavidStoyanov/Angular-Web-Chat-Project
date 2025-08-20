@@ -1,4 +1,6 @@
 <div class="container chat-wrap">
-    <app-room-board></app-room-board>
-    <app-chat-board></app-chat-board>
+    <app-room-board (roomSelected)="onRoomSelected($event)"></app-room-board>
+    @if(selectedRoomId) {
+    <app-chat-board [selectedRoom]="selectedRoomId"></app-chat-board>
+    }
 </div>

@@ -1,8 +1,7 @@
-import { ChatRoomService } from './../../../../core/services/chat-room/chat-room-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { RoomItem } from '../room-item/room-item';
-import { ChatRoomDto as ChatRoom } from '../../../../core/services';
+import { ChatRoomService, ChatRoomDto as ChatRoom } from '../../../../core/services';
 
 @Component({
     selector: 'app-room-board',
@@ -11,6 +10,8 @@ import { ChatRoomDto as ChatRoom } from '../../../../core/services';
     styleUrl: './room-board.scss'
 })
 export class RoomBoard implements OnInit {
+    @Output() roomSelected = new EventEmitter<string>();
+
     selectedRoom: string = '';
     rooms: ChatRoom[] = [];
 
@@ -21,7 +22,8 @@ export class RoomBoard implements OnInit {
     }
 
     selectRoom(id: string) {
-        
+        this.selectedRoom = id;
+        this.roomSelected.emit(id);
     }
 
     ngOnInit(): void {
