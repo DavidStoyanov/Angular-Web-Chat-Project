@@ -23,6 +23,12 @@ export class ChatRoomService {
                         .pipe(map(room => room.data as ChatRoomDto[]));
     }
 
+    //todo: remove this and request with filter
+    getAllRoomsForUser(id: number): Observable<ChatRoomDto[]> {
+        return this.httpClient.get<ResponseDto<ChatRoomDto[]>>(`${this.apiUrl}/${id}/user-specific`)
+                        .pipe(map(room => room.data as ChatRoomDto[]));
+    }
+
     createRoom(createDto: ChatRoomCreateDto): Observable<ChatRoomDto> {
         return this.httpClient.post<ResponseDto<ChatRoomDto>>(this.apiUrl, createDto)
                         .pipe(map(room => room.data as ChatRoomDto));

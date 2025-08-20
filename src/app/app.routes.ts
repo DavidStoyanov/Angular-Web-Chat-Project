@@ -39,9 +39,10 @@ export const routes: Routes = [
         data: { title: 'Profile'},
     },
     { 
-        path: 'chats',
-        component: Chats,
-        data: { title: 'My Chats'}
+        path: 'my-chats',
+        loadComponent: () => import('./features/my-chats/my-chats').then((c) => c.MyChats),
+        canActivate: [AuthGuard],
+        data: { title: 'My Chats'},
     },
     { 
         path: '**',

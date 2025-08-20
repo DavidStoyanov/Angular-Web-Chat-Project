@@ -2,6 +2,7 @@ export interface ChatRoomDto {
     id: string;
     title: string;
     participantsSize: number;
+    isDisabled: boolean;
 }
 
 export interface ChatRoomCreateDto {

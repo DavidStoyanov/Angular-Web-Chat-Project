@@ -1,0 +1,30 @@
+<div class="site-content">
+    <div class="container">
+
+        <div class="my-chats">
+            <ul class="list">
+                <h2>My Chats - Board</h2>
+
+                @for (room of rooms; track room.id) {
+                @if (!room.isDisabled) {
+
+                <li class="item">
+                    <form (submit)="updateRoomTitle(room.id, titleInput.value)">
+                        <input
+                            type="text"
+                            #titleInput
+                            [value]="room.title"/>
+                        <button type="submit">✔</button>
+                    </form>
+
+                    <button (click)="removeRoom(room.id, titleInput.value)">X</button>
+                </li>
+
+                }
+                }
+
+            </ul>
+        </div>
+        
+    </div>
+</div>
