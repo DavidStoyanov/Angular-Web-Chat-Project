@@ -6,7 +6,7 @@ export interface ChatRoomDto {
 
 export interface ChatRoomCreateDto {
     title: string;
-    creator: string;
+    creator: number;
 }
 
 export interface ChatRoomUpdateDto {

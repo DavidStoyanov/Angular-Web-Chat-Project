@@ -48,7 +48,7 @@ export class ChatBoard implements OnInit, OnDestroy {
 
         this.chatMessageService.createMessage(messageDto)
             .subscribe((data: MessageDto) => {
-                console.log(data)
+                //console.log(data)
                 this.messages.push(data)
             });
         this.newMessage = '';
