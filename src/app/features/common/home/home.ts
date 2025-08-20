@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { Chats } from '../../chats/chat-wrap/chats';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [Chats],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrl: './home.scss',
 })
-export class Home {
-
-}
+export class Home {}

@@ -1,0 +1,56 @@
+.chat-container {
+    display: flex;
+}
+
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    padding: 1em;
+
+    header {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+    }
+
+    .messages {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 1em;
+
+        .message {
+            margin-bottom: 0.5em;
+
+            .timestamp {
+                color: #888;
+                margin-left: 0.5em;
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        gap: 0.5em;
+
+        input {
+            flex: 1;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 0.5em 1em;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background: #333;
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<div class="sidebar">
+    <h3>Rooms</h3>
+    <ul>
+        @for (room of rooms; track room.id) {
+        <li (click)="selectRoom(room.id)">
+            <app-room-item [roomItem]="room"></app-room-item>
+        </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,19 @@
+<div class="chat-container">
+    <div class="chat-area">
+        <h2>{{ selectedRoom }}</h2>
+        <div class="messages">
+            @for (msg of messages; track $index) {
+                <app-chat-item [msgItem]="msg"></app-chat-item>
+            }
+        </div>
+        <div class="input-area">
+            <form (ngSubmit)="onSubmit()">
+                <input 
+                    name="newMessage"
+                    [(ngModel)]="newMessage"
+                    placeholder="Type a message..." />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>

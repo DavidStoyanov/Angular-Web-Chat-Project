@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home } from './features';
+import { Chats, Home } from './features';
 import { NotFound } from './shared/components';
 import { AuthGuard, GuestGuard } from './core/guards';
 
@@ -39,8 +39,13 @@ export const routes: Routes = [
         data: { title: 'Profile'},
     },
     { 
+        path: 'chats',
+        component: Chats,
+        data: { title: 'My Chats'}
+    },
+    { 
         path: '**',
         component: NotFound,
-        data: { title: 'NotFound'},
+        data: { title: 'Not Found'},
     },
 ];
